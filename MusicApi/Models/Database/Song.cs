@@ -15,13 +15,7 @@ namespace MusicApi.Models
 
         public bool IsFeatured { get; set; }
 
-        [NotMapped]
-        public IFormFile Image { get; set; }
-
         public string ImageUrl { get; set; }
-
-        [NotMapped]
-        public IFormFile AudioFile { get; set; }
 
         public String AudioUrl;
 
