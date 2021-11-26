@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MusicApi.Database;
@@ -41,8 +42,10 @@ namespace MusicApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllSongs()
+        public async Task<IActionResult> GetAllSongs(int? pageNumber, int? pageSize)
         {
+            int currentPageNumber = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 5;
             var allSongs = await (from songs in _dbContext.Songs
                                 select new
                                 {
@@ -53,7 +56,7 @@ namespace MusicApi.Controllers
                                     AudioUrl = songs.AudioUrl
                                 }).ToListAsync();
 
-            return Ok(allSongs);
+                return Ok(allSongs.Skip((currentPageNumber - 1) * currentPageSize).Take(currentPageSize));
         }
 
         [HttpGet("[action]")]
