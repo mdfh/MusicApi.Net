@@ -8,3 +8,6 @@ The application has three controllers for:
 * Albums
 
 ![Controllers](/Documents/controllers.png)
+
+## Database Schema
+![Schema](/Documents/DB Schema.png)
