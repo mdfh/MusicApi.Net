@@ -6,21 +6,22 @@ namespace MusicApi.Helper
     {
         public static async Task<string> UploadImage(IFormFile file)
             {
-            // Prepare connection strings
-            string connectionString = @"";
-            string containerName = "";
+            /**** Azure File upload code... *****/
+            //// Prepare connection strings
+            // string connectionString = @"";
+            // string containerName = "";
 
-            // Instantiate Azure Blob Client
+            //// Instantiate Azure Blob Client
             //var blobContainerClient = new BlobContainerClient(connectionString, containerName);
             //var blobClient = blobContainerClient.GetBlobClient(file.FileName);
 
             //var memoryStream = new MemoryStream();
             //await file.CopyToAsync(memoryStream);
 
-            // Set to initial position after copying
+            //// Set to initial position after copying
             //memoryStream.Position = 0;
 
-            // Upload image
+            //// Upload image
             //await blobClient.UploadAsync(memoryStream);
             //var imageUrl = blobClient.Uri.AbsoluteUri;
             //return imageUrl;
