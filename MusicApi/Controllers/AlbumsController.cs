@@ -60,5 +60,22 @@ namespace MusicApi.Controllers
                 .ToListAsync();
             return Ok(artistDetails);
         }
+
+        // PUT api/<SongsController>/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] AlbumApiModel value)
+        {
+            var album = await _dbContext.Albums.FindAsync(id);
+            if (album == null)
+            {
+                return NotFound("No record found against this id");
+            }
+            else
+            {
+                album.Name = value.Name;
+                await _dbContext.SaveChangesAsync();
+                return Ok("Record Updated Successfully");
+            }
+        }
     }
 }

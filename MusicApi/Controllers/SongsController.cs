@@ -109,5 +109,44 @@ namespace MusicApi.Controllers
 
             return Ok(allSongs);
         }
+
+        // PUT api/<SongsController>/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] SongsApiModel value)
+        {
+            var song = await _dbContext.Songs.FindAsync(id);
+            if (song == null)
+            {
+                return NotFound("No record found against this id");
+            }
+            else
+            {
+                song.Title = value.Title;
+                song.ArtistId = value.ArtistId;
+                song.AlbumId = value.AlbumId;
+                song.Duration = value.Duration;
+                await _dbContext.SaveChangesAsync();
+                return Ok("Record Updated Successfully");
+            }
+        }
+
+        // DELETE api/<SongsController>/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var song = await _dbContext.Songs.FindAsync(id);
+            if (song == null)
+            {
+                return NotFound("No record found against this id");
+            }
+            else
+            {
+
+                _dbContext.Songs.Remove(song);
+                await _dbContext.SaveChangesAsync();
+                return Ok("Record Deleted Successfully");
+            }
+
+        }
     }
 }
