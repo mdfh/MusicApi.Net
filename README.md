@@ -10,4 +10,4 @@ The application has three controllers for:
 ![Controllers](/Documents/controllers.png)
 
 ## Database Schema
-![Schema](/Documents/DB Schema.png)
+![Schema](/Documents/controllers.png)
