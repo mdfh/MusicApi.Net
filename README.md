@@ -7,4 +7,4 @@ The application has three controllers for:
 * Artists
 * Albums
 
-![GitHub Logo](/documents/controllers.png)
+![Controllers](/MusicApi.Net/Documents/controllers.png)
